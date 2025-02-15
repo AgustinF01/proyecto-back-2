@@ -3,7 +3,7 @@ const User = require("../models/User");
 
 exports.asignarProfesor = async (req, res) => {
     try {
-        const { teacherId } = req.body; // Cambiar de profesorId a teacherId
+        const { teacherId } = req.body;
         const { id } = req.params;
 
         // Verificar si el usuario tiene el rol "teacher"
@@ -18,7 +18,7 @@ exports.asignarProfesor = async (req, res) => {
             return res.status(404).json({ message: "Turno no encontrado" });
         }
 
-        turno.profesor = teacherId; // Aquí también cambiarlo a teacherId
+        turno.profesor = teacherId;
         await turno.save();
 
         res.status(200).json({ message: "Profesor asignado correctamente", turno });
